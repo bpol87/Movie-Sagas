@@ -3,12 +3,11 @@ import logger from 'redux-logger';
 import createSagaMiddleware from 'redux-saga';
 import { takeEvery, put, takeLatest } from 'redux-saga/effects';
 import axios from 'axios';
-import { stackTraceLimit } from 'postcss/lib/css-syntax-error';
 
 // Create the rootSaga generator function
 function* rootSaga() {
-  yield takeEvery('FETCH_MOVIES', fetchAllMovies);
-  yield takeLatest('GET_DETAILS', getOneMovieDetails)
+  yield takeLatest('FETCH_MOVIES', fetchAllMovies);
+  yield takeLatest('GET_DETAILS', getOneMovieDetails);
 }
 
 function* getOneMovieDetails(action) {
@@ -24,10 +23,9 @@ try {
     payload: oneMovieDetails.data
   })
 } catch {
-
+  console.log('getOneMovieDetails error:', error);
 }
 }
-
 
 function* fetchAllMovies() {
   try {
@@ -47,7 +45,7 @@ function* fetchAllMovies() {
 const sagaMiddleware = createSagaMiddleware();
 
 // Used to store movies returned from the server
-const movies = (state = [], action) => {
+const movies = (state = [''], action) => {
   switch (action.type) {
     case 'SET_MOVIES':
       return action.payload;
@@ -57,7 +55,7 @@ const movies = (state = [], action) => {
 }
 
 // Used to store the specific movie details
-const details = (state=[], action) => {
+const details = (state=[''], action) => {
   if( action.type === 'SET_DETAIL') {
       return action.payload;
   }
@@ -65,7 +63,7 @@ const details = (state=[], action) => {
 }
 
 // Used to store the movie genres
-const genres = (state = [], action) => {
+const genres = (state = [''], action) => {
   switch (action.type) {
     case 'SET_GENRES':
       return action.payload;

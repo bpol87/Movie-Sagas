@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
-import "./MovieList.css";
+
 
 function MovieList() {
   const dispatch = useDispatch();
@@ -14,7 +14,7 @@ function MovieList() {
 
   const getMovieDetails = (movieId) => {
     dispatch({ type: "GET_DETAILS", payload: movieId })
-    history.push('/details');
+      history.push('/details')
   };
 
   return (
@@ -27,10 +27,10 @@ function MovieList() {
               data-testid="movieItem"
               key={movie.id}
               className="border-gray-700 border m-4 flex flex-col w-3/12 space-y-4"
-              onClick={() => getMovieDetails(movie.id)}
+              
             >
-              <h3 className="text-center p-2">{movie.title}</h3>
-              <img src={movie.poster} alt={movie.title} />
+              <h3 className="text-center text-2xl font-bold p-2">{movie.title}</h3>
+              <img data-testid="toDetails" src={movie.poster} alt={movie.title} onClick={() => getMovieDetails(movie.id)} />
             </div>
           );
         })}
