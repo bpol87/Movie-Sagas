@@ -1,13 +1,33 @@
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 import logger from 'redux-logger';
 import createSagaMiddleware from 'redux-saga';
-import { takeEvery, put } from 'redux-saga/effects';
+import { takeEvery, put, takeLatest } from 'redux-saga/effects';
 import axios from 'axios';
+import { stackTraceLimit } from 'postcss/lib/css-syntax-error';
 
 // Create the rootSaga generator function
 function* rootSaga() {
   yield takeEvery('FETCH_MOVIES', fetchAllMovies);
+  yield takeLatest('GET_DETAILS', getOneMovieDetails)
 }
+
+function* getOneMovieDetails(action) {
+try {
+  const oneMovieGenres = yield axios.get(`/api/genres/${action.payload}`);
+  yield put({
+    type: 'SET_GENRES',
+    payload: oneMovieGenres.data
+  })
+  const oneMovieDetails = yield axios.get(`/api/details/${action.payload}`);
+  yield put ({
+    type: 'SET_DETAIL',
+    payload: oneMovieDetails.data
+  })
+} catch {
+
+}
+}
+
 
 function* fetchAllMovies() {
   try {
@@ -36,6 +56,14 @@ const movies = (state = [], action) => {
   }
 }
 
+// Used to store the specific movie details
+const details = (state=[], action) => {
+  if( action.type === 'SET_DETAIL') {
+      return action.payload;
+  }
+        return state;
+}
+
 // Used to store the movie genres
 const genres = (state = [], action) => {
   switch (action.type) {
@@ -51,6 +79,7 @@ const storeInstance = createStore(
   combineReducers({
     movies,
     genres,
+    details,
   }),
   // Add sagaMiddleware to our store
   applyMiddleware(sagaMiddleware, logger),
