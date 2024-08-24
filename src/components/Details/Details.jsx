@@ -10,13 +10,13 @@ function Details() {
 
   return (
     <div className="flex flex-col items-center" data-testid="movieDetails">
-      <button data-testid="toList" className="p-2 m-4 w-3/12 border">
+      <button data-testid="toList" className="p-2 m-4 w-3/12 border shadow-md hover:bg-slate-700 hover:text-white">
         <Link to="/">Back to Movie List</Link>
       </button>
       <div className="flex flex-row justify-center mt-4">
         <img
           src={movieToUse ? movieToUse[0].poster : ""}
-          className="w-12/12 h-1/2 aspect-auto max-w-80"
+          className="w-12/12 h-1/2 aspect-auto w-60 max-w-96"
         ></img>
         <div className="w-5/12 pl-4">
           <h2 className="m-2 text-4xl font-bold">
