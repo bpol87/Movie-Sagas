@@ -8,6 +8,15 @@ import axios from 'axios';
 function* rootSaga() {
   yield takeLatest('FETCH_MOVIES', fetchAllMovies);
   yield takeLatest('GET_DETAILS', getOneMovieDetails);
+  yield takeLatest('ADD_MOVIE', addMovieToDb);
+}
+
+function* addMovieToDb(action) {
+    try {
+      const addedMovie = yield axios.post('/api/movies', action.payload)
+    } catch {
+
+    }
 }
 
 function* getOneMovieDetails(action) {

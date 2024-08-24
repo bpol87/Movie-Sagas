@@ -31,7 +31,7 @@ function MovieList() {
                 {movie.title}
               </h3>
               <img
-              className="hover:cursor-pointer"
+              className="hover:cursor-pointer max-w-96 min-w-96"
                 data-testid="toDetails"
                 src={movie.poster}
                 alt={movie.title}

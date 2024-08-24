@@ -16,7 +16,7 @@ function Details() {
       <div className="flex flex-row justify-center mt-4">
         <img
           src={movieToUse ? movieToUse[0].poster : ""}
-          className="w-12/12 h-1/2 aspect-auto"
+          className="w-12/12 h-1/2 aspect-auto max-w-80"
         ></img>
         <div className="w-5/12 pl-4">
           <h2 className="m-2 text-4xl font-bold">
