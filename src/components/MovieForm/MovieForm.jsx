@@ -27,7 +27,7 @@ function MovieForm() {
 
   return (
     <div className="flex flex-col items-center">
-      <div className="flex flex-col border-slate-600 shadow-lg w-9/12">
+      <div className="flex flex-col justify-center border-slate-600 shadow-lg w-9/12">
         <div className="flex flex-col items-center py-6">
           <h2 className="text-2xl font-bold">Add a Movie!</h2>
         </div>
@@ -42,8 +42,8 @@ function MovieForm() {
             >
               Movie Title
             </label>
-            <div className="mt-2">
-              <div className="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
+            <div className="mt-2 w-full">
+              <div className="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 ">
                 <input
                   value={movieTitle}
                   onChange={(e) => setMovieTitle(e.target.value)}
@@ -51,7 +51,7 @@ function MovieForm() {
                   name="movie-title"
                   id="movie-title"
                   autoComplete="movie-title"
-                  className="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
+                  className="block flex-1 border-0 bg-transparent py-1.5 pl-1 w-full text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
                   placeholder="i.e. Titanic"
                 />
               </div>
@@ -65,7 +65,7 @@ function MovieForm() {
               Movie Image
             </label>
             <div className="mt-2">
-              <div className="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
+              <div className="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600">
                 <input
                   value={movieUrl}
                   onChange={(e) => setMovieUrl(e.target.value)}
@@ -87,7 +87,7 @@ function MovieForm() {
               Movie Description
             </label>
             <div className="mt-2">
-              <div className="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
+              <div className="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600">
                 <textarea
                   value={movieDesc}
                   onChange={(e) => setMovieDesc(e.target.value)}
@@ -126,7 +126,7 @@ function MovieForm() {
               </select>
             </div>
           </div>
-          <button className="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md px-6 py-2 my-6 bg-slate-800 text-white hover:bg-slate-100 hover:text-slate-950">
+          <button className="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 px-6 py-2 my-6 bg-slate-800 text-white hover:bg-slate-100 hover:text-slate-950">
             Submit Movie
           </button>
         </form>
